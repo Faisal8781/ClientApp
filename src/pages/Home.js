@@ -32,7 +32,7 @@ function Home() {
   const likeAPost = (postId) => {
     axios
       .post(
-        "http://localhost:3001/like",
+        "https://faisal-postapi-389d915ec785.herokuapp.com/like",
         { PostId: postId },
         { headers: { accessToken: localStorage.getItem("accessToken") } }
       )
