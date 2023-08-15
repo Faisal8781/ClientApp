@@ -15,13 +15,19 @@ function Post() {
     // setComments(comment.data)
     // }))
     const APICallRender = () => {
-      axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
-        setPostObject(response.data);
-      });
+      axios
+        .get(
+          `https://faisal-postapi-389d915ec785.herokuapp.com/posts/byId/${id}`
+        )
+        .then((response) => {
+          setPostObject(response.data);
+        });
 
-      axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
-        setComments(response.data);
-      });
+      axios
+        .get(`https://faisal-postapi-389d915ec785.herokuapp.com/comments/${id}`)
+        .then((response) => {
+          setComments(response.data);
+        });
     };
 
     APICallRender();
@@ -29,7 +35,7 @@ function Post() {
   const addComment = () => {
     axios
       .post(
-        "http://localhost:3001/comments",
+        "https://faisal-postapi-389d915ec785.herokuapp.com/comments",
         { commentBody: newComment, PostId: id },
         {
           headers: {
@@ -54,9 +60,12 @@ function Post() {
 
   const deleteComment = (id) => {
     axios
-      .delete(`http://localhost:3001/comments/${id}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .delete(
+        `https://faisal-postapi-389d915ec785.herokuapp.com/comments/${id}`,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then(() => {
         setComments(
           comments.filter((val) => {
@@ -67,7 +76,7 @@ function Post() {
   };
   const deletePost = (id) => {
     axios
-      .delete(`http://localhost:3001/posts/${id}`, {
+      .delete(`https://faisal-postapi-389d915ec785.herokuapp.com/posts/${id}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
@@ -79,7 +88,7 @@ function Post() {
     if (option === "title") {
       let newTitle = prompt("Enter New Title:");
       axios.put(
-        "http://localhost:3001/posts/title",
+        "https://faisal-postapi-389d915ec785.herokuapp.com/posts/title",
         { newTitle: newTitle, id: id },
         { headers: { accessToken: localStorage.getItem("accessToken") } }
       );
@@ -87,7 +96,7 @@ function Post() {
     } else {
       let newPostText = prompt("Enter New Text:");
       axios.put(
-        "http://localhost:3001/posts/postText",
+        "https://faisal-postapi-389d915ec785.herokuapp.com/posts/postText",
         { newText: newPostText, id: id },
         { headers: { accessToken: localStorage.getItem("accessToken") } }
       );

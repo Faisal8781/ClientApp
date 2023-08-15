@@ -15,7 +15,7 @@ function Home() {
       history("/login");
     } else {
       axios
-        .get("http://localhost:3001/posts", {
+        .get("https://faisal-postapi-389d915ec785.herokuapp.com/posts", {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then((response) => {

@@ -15,7 +15,9 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then(() => {});
+    axios
+      .post("https://faisal-postapi-389d915ec785.herokuapp.com/auth", data)
+      .then(() => {});
   };
   return (
     <div>
